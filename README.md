@@ -5,6 +5,10 @@
 
 Rethinking the agile-checklist and the agileDMAIC method.
 
+## User Storues
+
+1. As a member of a team, I want to create a checklist, so that I could use and share with my team and start using it to evaluate a process.
+
 ## Architecture overview
 
 #### Class diagram (Model - Entities)
