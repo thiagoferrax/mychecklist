@@ -7,5 +7,5 @@ import com.company.mychecklist.entities.Checklist;
 
 @Repository
 public interface ChecklistRepository extends JpaRepository<Checklist, Long>{
-
+	
 }
