@@ -11,6 +11,29 @@ Rethinking the agile-checklist and the agileDMAIC method.
 
 ## Architecture overview
 
+#### Project structure
+```
+
+└───my-checklist
+    ├───.mvn
+    │   └───wrapper
+    ├───src
+    │   ├───main
+    │   │   ├───java
+    │   │   │   └───com
+    │   │   │       └───company
+    │   │   │           └───mychecklist
+    │   │   │               ├───entities
+    │   │   │               ├───repositories
+    │   │   │               ├───resources
+    │   │   │               └───services
+    │   │   └───resources
+    │   └───test
+    │       └───java
+    │           └───com
+    │               └───company
+    │                   └───mychecklist
+```
 #### Class diagram (Model - Entities)
 
 ![mychecklist](https://user-images.githubusercontent.com/43149895/130370398-4ea0d9b9-8ee7-4a44-a15b-29400e0ad6cd.png)
