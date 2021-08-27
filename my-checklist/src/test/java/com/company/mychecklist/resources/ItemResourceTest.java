@@ -26,9 +26,6 @@ class ItemResourceTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
-	@MockBean
-	private ItemResource itemResource;
 	
 	@MockBean
 	private ItemService service;
@@ -36,7 +33,7 @@ class ItemResourceTest {
 	@MockBean
 	private ChecklistService checklistService;
 	
-	//@Test
+	@Test
 	public void testFindAll() throws Exception {
 		// Given
 		Mockito.when(service.findAll())
