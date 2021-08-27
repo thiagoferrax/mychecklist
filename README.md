@@ -13,7 +13,6 @@ Rethinking the agile-checklist and the agileDMAIC method.
 
 #### Project structure
 ```
-
 └───my-checklist
     ├───.mvn
     │   └───wrapper
@@ -23,6 +22,8 @@ Rethinking the agile-checklist and the agileDMAIC method.
     │   │   │   └───com
     │   │   │       └───company
     │   │   │           └───mychecklist
+    │   │   │               ├───builders
+    │   │   │               ├───configurations
     │   │   │               ├───entities
     │   │   │               ├───repositories
     │   │   │               ├───resources
@@ -33,6 +34,8 @@ Rethinking the agile-checklist and the agileDMAIC method.
     │           └───com
     │               └───company
     │                   └───mychecklist
+    │                       ├───resources
+    │                       └───services
 ```
 #### Class diagram (Model - Entities)
 
