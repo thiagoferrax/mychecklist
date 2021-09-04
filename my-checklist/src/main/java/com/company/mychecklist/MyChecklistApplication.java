@@ -17,12 +17,12 @@ import com.company.mychecklist.repositories.ItemRepository;
 @SpringBootApplication
 public class MyChecklistApplication implements CommandLineRunner {
 
-	@Autowired
-	private ItemRepository itemRepository;
-
-	@Autowired
-	private ChecklistRepository checklistRepository;
-
+	/*
+	 * @Autowired private ItemRepository itemRepository;
+	 * 
+	 * @Autowired private ChecklistRepository checklistRepository;
+	 */
+	
 	public static void main(String[] args) {
 		SpringApplication.run(MyChecklistApplication.class, args);
 	}
@@ -38,8 +38,8 @@ public class MyChecklistApplication implements CommandLineRunner {
 		artifacts.setChecklist(scrumChecklist);
 		roles.setChecklist(scrumChecklist);
 		
-		checklistRepository.save(scrumChecklist);
-		itemRepository.saveAll(items);
+		//checklistRepository.save(scrumChecklist);
+		//itemRepository.saveAll(items);
 
 	}
 

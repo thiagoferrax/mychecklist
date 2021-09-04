@@ -24,12 +24,16 @@ public class ChecklistService {
 	}
 
 	public Checklist create(Checklist checklist) {
+		
+		Checklist createdChecklist = repository.save(checklist);
+		
 		List<Item> items = checklist.getItems();
 		if (!CollectionUtils.isEmpty(items)) {
+			items.stream().forEach(item -> item.setChecklist(createdChecklist));
 			checklist.setItems(itemService.createAll(items));
 		}
 
-		return repository.save(checklist);
+		return createdChecklist;
 	}
 
 	public Checklist findById(Long id) {

@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.company.mychecklist.builders.ItemBuilder;
+import com.company.mychecklist.repositories.ItemRepository;
 import com.company.mychecklist.services.ChecklistService;
 import com.company.mychecklist.services.ItemService;
 
@@ -30,6 +31,10 @@ class ItemResourceTest {
 	@MockBean
 	private ItemService service;
 	
+
+	@MockBean
+	private ItemRepository repository;
+
 	@MockBean
 	private ChecklistService checklistService;
 	
@@ -39,7 +44,10 @@ class ItemResourceTest {
 		Mockito.when(service.findAll())
 				.thenReturn(List.of(ItemBuilder.getInstance().withId(1L).withTitle("Artifacts").now()));
 
-		// When and Then
+		// When
+		Mockito.when(repository.findAll()).thenReturn(List.of(ItemBuilder.getInstance().withId(1L).withTitle("Artifacts").now()));
+		
+		// Then
 		this.mockMvc.perform(get("/items")).andExpect(status().isOk()).andExpect(content().json("[{\"id\": 1, \"title\": \"Artifacts\"}]"));
 	}
 
