@@ -9,6 +9,7 @@ import org.springframework.util.CollectionUtils;
 import com.company.mychecklist.models.Checklist;
 import com.company.mychecklist.models.Item;
 import com.company.mychecklist.repositories.ChecklistRepository;
+import com.company.mychecklist.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ChecklistService {
@@ -32,6 +33,12 @@ public class ChecklistService {
 	}
 
 	public Checklist findById(Long id) {
-		return repository.findById(id).orElse(null);
+		Checklist checklist = repository.findById(id).orElse(null);
+
+		if (checklist == null) {
+			throw new ObjectNotFoundException("Checklist nao encontrado para o id " + id);
+		}
+
+		return checklist;
 	}
 }
