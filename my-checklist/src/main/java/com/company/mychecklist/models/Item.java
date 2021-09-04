@@ -22,6 +22,7 @@ public class Item implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
+	private String description;
 
 	@ManyToOne(targetEntity = Checklist.class)
 	@JsonIgnore
@@ -83,6 +84,14 @@ public class Item implements Serializable {
 		this.children = children;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -102,7 +111,7 @@ public class Item implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Item [id=" + id + ", title=" + title + "]";
+		return "Item [id=" + id + ", title=" + title + ", description=" + description + "]";
 	}
 
 }
