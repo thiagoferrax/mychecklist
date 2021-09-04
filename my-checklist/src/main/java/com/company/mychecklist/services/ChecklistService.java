@@ -13,6 +13,8 @@ import com.company.mychecklist.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ChecklistService {
+	public static final String CHECKLIST_NOT_FOUND = "Checklist not found for id ";
+
 	@Autowired
 	private ChecklistRepository repository;
 
@@ -40,7 +42,7 @@ public class ChecklistService {
 		Checklist checklist = repository.findById(id).orElse(null);
 
 		if (checklist == null) {
-			throw new ObjectNotFoundException("Checklist nao encontrado para o id " + id);
+			throw new ObjectNotFoundException(CHECKLIST_NOT_FOUND + id);
 		}
 
 		return checklist;

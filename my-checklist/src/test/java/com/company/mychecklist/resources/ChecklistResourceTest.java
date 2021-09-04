@@ -22,6 +22,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.company.mychecklist.builders.ChecklistBuilder;
 import com.company.mychecklist.models.Checklist;
 import com.company.mychecklist.services.ChecklistService;
+import com.company.mychecklist.services.exceptions.ObjectNotFoundException;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest
@@ -56,6 +57,16 @@ class ChecklistResourceTest {
 		// When and Then
 		this.mockMvc.perform(get("/checklists/1")).andExpect(status().isOk())
 				.andExpect(content().json("{\"id\": 1, \"name\": \"Scrum Checklist\"}"));
+	}
+	
+	@Test
+	public void testFindByIdWithNoFoundChecklist() throws Exception {
+		// Given
+		Mockito.when(service.findById(0L))
+				.thenThrow(new ObjectNotFoundException(ChecklistService.CHECKLIST_NOT_FOUND + 0));
+
+		// When and Then
+		this.mockMvc.perform(get("/checklists/0")).andExpect(status().isNotFound());
 	}
 
 	@Test
