@@ -25,10 +25,12 @@ Rethinking the agile-checklist and the agileDMAIC method.
     │   │   │           └───mychecklist
     │   │   │               ├───builders
     │   │   │               ├───configurations
-    │   │   │               ├───entities
+    │   │   │               ├───models
     │   │   │               ├───repositories
     │   │   │               ├───resources
+    │   │   │               │   └───exceptions
     │   │   │               └───services
+    │   │   │                   └───exceptions
     │   │   └───resources
     │   └───test
     │       └───java
