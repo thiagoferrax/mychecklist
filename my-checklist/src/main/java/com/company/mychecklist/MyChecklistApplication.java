@@ -2,7 +2,6 @@ package com.company.mychecklist;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,8 +10,6 @@ import com.company.mychecklist.builders.ChecklistBuilder;
 import com.company.mychecklist.builders.ItemBuilder;
 import com.company.mychecklist.models.Checklist;
 import com.company.mychecklist.models.Item;
-import com.company.mychecklist.repositories.ChecklistRepository;
-import com.company.mychecklist.repositories.ItemRepository;
 
 @SpringBootApplication
 public class MyChecklistApplication implements CommandLineRunner {
