@@ -16,4 +16,8 @@ public class ChecklistService {
 	public List<Checklist> findAll() {
 		return repository.findAll();
 	}
+
+	public Checklist create(Checklist checklist) {
+		return repository.save(checklist);
+	}
 }

@@ -1,7 +1,9 @@
 package com.company.mychecklist.resources;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.List;
@@ -12,12 +14,14 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.company.mychecklist.builders.ChecklistBuilder;
+import com.company.mychecklist.entities.Checklist;
 import com.company.mychecklist.services.ChecklistService;
-
 
 @RunWith(SpringRunner.class)
 @WebMvcTest
@@ -28,7 +32,7 @@ class ChecklistResourceTest {
 
 	@MockBean
 	private ItemResource itemResource;
-	
+
 	@MockBean
 	private ChecklistService service;
 
@@ -39,7 +43,26 @@ class ChecklistResourceTest {
 				.thenReturn(List.of(ChecklistBuilder.getInstance().withId(1L).withName("Scrum Checklist").now()));
 
 		// When and Then
-		this.mockMvc.perform(get("/checklists")).andExpect(status().isOk()).andExpect(content().json("[{\"id\": 1, \"name\": \"Scrum Checklist\"}]"));
+		this.mockMvc.perform(get("/checklists")).andExpect(status().isOk())
+				.andExpect(content().json("[{\"id\": 1, \"name\": \"Scrum Checklist\"}]"));
+	}
+
+	@Test
+	public void testCreateChecklistWithNameOnly() throws Exception {
+		// Given
+		String inputJson = "{\"name\":\"Scrum Checklist\"}";
+
+		Checklist checklist = ChecklistBuilder.getInstance().withName("Scrum Checklist").now();
+		
+		// When 
+		Checklist createdChecklist = ChecklistBuilder.getInstance().withName("Scrum Checklist").withId(1L).now();
+		Mockito.when(service.create(checklist)).thenReturn(createdChecklist);
+		
+		// Then
+		this.mockMvc.perform(post("/checklists").contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson))
+				.andExpect(status().isCreated())
+				.andExpect(header().string(HttpHeaders.LOCATION, "http://localhost/checklists/" + 1));
+
 	}
 
 }
