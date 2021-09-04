@@ -38,7 +38,7 @@ class ChecklistResourceTest {
 	private ChecklistService service;
 
 	@Test
-	public void testFindAll() throws Exception {
+	void testFindAll() throws Exception {
 		// Given
 		Mockito.when(service.findAll())
 				.thenReturn(List.of(ChecklistBuilder.getInstance().withId(1L).withName("Scrum Checklist").now()));
@@ -49,7 +49,7 @@ class ChecklistResourceTest {
 	}
 	
 	@Test
-	public void testFindById() throws Exception {
+	void testFindById() throws Exception {
 		// Given
 		Mockito.when(service.findById(1L))
 				.thenReturn(ChecklistBuilder.getInstance().withId(1L).withName("Scrum Checklist").now());
@@ -60,7 +60,7 @@ class ChecklistResourceTest {
 	}
 	
 	@Test
-	public void testFindByIdWithNoFoundChecklist() throws Exception {
+	void testFindByIdWithNoFoundChecklist() throws Exception {
 		// Given
 		Mockito.when(service.findById(0L))
 				.thenThrow(new ObjectNotFoundException(ChecklistService.CHECKLIST_NOT_FOUND + 0));
@@ -70,7 +70,7 @@ class ChecklistResourceTest {
 	}
 
 	@Test
-	public void testCreateChecklistWithNameOnly() throws Exception {
+	void testCreateChecklistWithNameOnly() throws Exception {
 		// Given
 		String inputJson = "{\"name\":\"Scrum Checklist\"}";
 
@@ -89,7 +89,7 @@ class ChecklistResourceTest {
 
 	
 	@Test
-	public void testCreateChecklistWithNameAndOneItem() throws Exception {
+	void testCreateChecklistWithNameAndOneItem() throws Exception {
 		// Given
 		String inputJson = "{\r\n"
 				+ "    \"name\":\"Scrum Checklist\",\r\n"

@@ -39,7 +39,7 @@ class ItemResourceTest {
 	private ChecklistService checklistService;
 	
 	@Test
-	public void testFindAll() throws Exception {
+	void testFindAll() throws Exception {
 		// Given
 		Mockito.when(service.findAll())
 				.thenReturn(List.of(ItemBuilder.getInstance().withId(1L).withTitle("Artifacts").now()));
