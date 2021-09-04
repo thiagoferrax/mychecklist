@@ -1,6 +1,9 @@
 package com.company.mychecklist.builders;
 
-import com.company.mychecklist.entities.Checklist;
+import java.util.List;
+
+import com.company.mychecklist.models.Checklist;
+import com.company.mychecklist.models.Item;
 
 public class ChecklistBuilder {
 
@@ -22,6 +25,11 @@ public class ChecklistBuilder {
 	
 	public ChecklistBuilder withName(String name) {
 		checklist.setName(name);
+		return this;
+	}
+	
+	public ChecklistBuilder withItems(List<Item> items) {
+		checklist.setItems(items);
 		return this;
 	}
 	

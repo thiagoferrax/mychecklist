@@ -1,6 +1,6 @@
 package com.company.mychecklist.builders;
 
-import com.company.mychecklist.entities.Item;
+import com.company.mychecklist.models.Item;
 
 public class ItemBuilder {
 

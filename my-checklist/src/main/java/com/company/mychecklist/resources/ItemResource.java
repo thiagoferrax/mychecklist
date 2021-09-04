@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.company.mychecklist.entities.Item;
+import com.company.mychecklist.models.Item;
 import com.company.mychecklist.services.ItemService;
 
 @RestController
@@ -20,7 +20,6 @@ public class ItemResource {
 
 	@GetMapping
 	public ResponseEntity<List<Item>> findAll() {
-		List<Item> items = service.findAll();
-		return ResponseEntity.ok(items);
+		return ResponseEntity.ok(service.findAll());
 	}
 }

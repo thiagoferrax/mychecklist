@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.company.mychecklist.builders.ChecklistBuilder;
-import com.company.mychecklist.entities.Checklist;
+import com.company.mychecklist.models.Checklist;
 import com.company.mychecklist.services.ChecklistService;
 
 @RunWith(SpringRunner.class)
@@ -46,6 +46,17 @@ class ChecklistResourceTest {
 		this.mockMvc.perform(get("/checklists")).andExpect(status().isOk())
 				.andExpect(content().json("[{\"id\": 1, \"name\": \"Scrum Checklist\"}]"));
 	}
+	
+	@Test
+	public void testFindById() throws Exception {
+		// Given
+		Mockito.when(service.findById(1L))
+				.thenReturn(ChecklistBuilder.getInstance().withId(1L).withName("Scrum Checklist").now());
+
+		// When and Then
+		this.mockMvc.perform(get("/checklists/1")).andExpect(status().isOk())
+				.andExpect(content().json("{\"id\": 1, \"name\": \"Scrum Checklist\"}"));
+	}
 
 	@Test
 	public void testCreateChecklistWithNameOnly() throws Exception {
@@ -65,4 +76,30 @@ class ChecklistResourceTest {
 
 	}
 
+	
+	@Test
+	public void testCreateChecklistWithNameAndOneItem() throws Exception {
+		// Given
+		String inputJson = "{\r\n"
+				+ "    \"name\":\"Scrum Checklist\",\r\n"
+				+ "    \"items\": [\r\n"
+				+ "        {\r\n"
+				+ "            \"title\": \"Roles\",\r\n"
+				+ "            \"description\": \"Roles of Scrum\"\r\n"
+				+ "        }\r\n"
+				+ "    ]\r\n"
+				+ "}";
+
+		Checklist checklist = ChecklistBuilder.getInstance().withName("Scrum Checklist").now();
+		
+		// When 
+		Checklist createdChecklist = ChecklistBuilder.getInstance().withName("Scrum Checklist").withId(1L).now();
+		Mockito.when(service.create(checklist)).thenReturn(createdChecklist);
+		
+		// Then
+		this.mockMvc.perform(post("/checklists").contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson))
+				.andExpect(status().isCreated())
+				.andExpect(header().string(HttpHeaders.LOCATION, "http://localhost/checklists/" + createdChecklist.getId()));
+
+	}
 }

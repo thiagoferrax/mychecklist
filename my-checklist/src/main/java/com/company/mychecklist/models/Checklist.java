@@ -1,9 +1,9 @@
-package com.company.mychecklist.entities;
+package com.company.mychecklist.models;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +21,7 @@ public class Checklist implements Serializable {
 	private String name;
 	
 	@OneToMany(mappedBy = "checklist")
-	private Set<Item> items = new HashSet<>();
+	private List<Item> items = new ArrayList<>();
 	
 	public Checklist() {
 	}
@@ -48,11 +48,11 @@ public class Checklist implements Serializable {
 		this.name = name;
 	}
 
-	public Set<Item> getItems() {
+	public List<Item> getItems() {
 		return items;
 	}
 
-	public void setItems(Set<Item> items) {
+	public void setItems(List<Item> items) {
 		this.items = items;
 	}
 

@@ -1,4 +1,4 @@
-package com.company.mychecklist.entities;
+package com.company.mychecklist.models;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Item implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -22,6 +24,7 @@ public class Item implements Serializable {
 	private String title;
 
 	@ManyToOne(targetEntity = Checklist.class)
+	@JsonIgnore
 	private Checklist checklist;
 
 	@ManyToOne(targetEntity = Item.class)
