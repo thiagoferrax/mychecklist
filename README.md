@@ -1,5 +1,6 @@
 # mychecklist
 [![Build Status](https://app.travis-ci.com/thiagoferrax/mychecklist.svg?branch=master)](https://app.travis-ci.com/thiagoferrax/mychecklist)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=com.company%3Amy-checklist&metric=alert_status)]
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
 
 ## About
