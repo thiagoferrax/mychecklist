@@ -23,8 +23,8 @@ public class ChecklistBuilder {
 		return this;
 	}
 	
-	public ChecklistBuilder withName(String name) {
-		checklist.setName(name);
+	public ChecklistBuilder withTitle(String title) {
+		checklist.setTitle(title);
 		return this;
 	}
 	

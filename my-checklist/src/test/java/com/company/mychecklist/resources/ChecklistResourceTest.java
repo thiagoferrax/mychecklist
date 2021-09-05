@@ -41,22 +41,22 @@ class ChecklistResourceTest {
 	void testFindAll() throws Exception {
 		// Given
 		Mockito.when(service.findAll())
-				.thenReturn(List.of(ChecklistBuilder.getInstance().withId(1L).withName("Scrum Checklist").now()));
+				.thenReturn(List.of(ChecklistBuilder.getInstance().withId(1L).withTitle("Scrum Checklist").now()));
 
 		// When and Then
 		this.mockMvc.perform(get("/checklists")).andExpect(status().isOk())
-				.andExpect(content().json("[{\"id\": 1, \"name\": \"Scrum Checklist\"}]"));
+				.andExpect(content().json("[{\"id\": 1, \"title\": \"Scrum Checklist\"}]"));
 	}
 	
 	@Test
 	void testFindById() throws Exception {
 		// Given
 		Mockito.when(service.findById(1L))
-				.thenReturn(ChecklistBuilder.getInstance().withId(1L).withName("Scrum Checklist").now());
+				.thenReturn(ChecklistBuilder.getInstance().withId(1L).withTitle("Scrum Checklist").now());
 
 		// When and Then
 		this.mockMvc.perform(get("/checklists/1")).andExpect(status().isOk())
-				.andExpect(content().json("{\"id\": 1, \"name\": \"Scrum Checklist\"}"));
+				.andExpect(content().json("{\"id\": 1, \"title\": \"Scrum Checklist\"}"));
 	}
 	
 	@Test
@@ -70,14 +70,14 @@ class ChecklistResourceTest {
 	}
 
 	@Test
-	void testCreateChecklistWithNameOnly() throws Exception {
+	void testCreateChecklistWithTitleOnly() throws Exception {
 		// Given
-		String inputJson = "{\"name\":\"Scrum Checklist\"}";
+		String inputJson = "{\"title\":\"Scrum Checklist\"}";
 
-		Checklist checklist = ChecklistBuilder.getInstance().withName("Scrum Checklist").now();
+		Checklist checklist = ChecklistBuilder.getInstance().withTitle("Scrum Checklist").now();
 		
 		// When 
-		Checklist createdChecklist = ChecklistBuilder.getInstance().withName("Scrum Checklist").withId(1L).now();
+		Checklist createdChecklist = ChecklistBuilder.getInstance().withTitle("Scrum Checklist").withId(1L).now();
 		Mockito.when(service.create(checklist)).thenReturn(createdChecklist);
 		
 		// Then
@@ -89,10 +89,10 @@ class ChecklistResourceTest {
 
 	
 	@Test
-	void testCreateChecklistWithNameAndOneItem() throws Exception {
+	void testCreateChecklistWithTitleAndOneItem() throws Exception {
 		// Given
 		String inputJson = "{\r\n"
-				+ "    \"name\":\"Scrum Checklist\",\r\n"
+				+ "    \"title\":\"Scrum Checklist\",\r\n"
 				+ "    \"items\": [\r\n"
 				+ "        {\r\n"
 				+ "            \"title\": \"Roles\",\r\n"
@@ -101,10 +101,10 @@ class ChecklistResourceTest {
 				+ "    ]\r\n"
 				+ "}";
 
-		Checklist checklist = ChecklistBuilder.getInstance().withName("Scrum Checklist").now();
+		Checklist checklist = ChecklistBuilder.getInstance().withTitle("Scrum Checklist").now();
 		
 		// When 
-		Checklist createdChecklist = ChecklistBuilder.getInstance().withName("Scrum Checklist").withId(1L).now();
+		Checklist createdChecklist = ChecklistBuilder.getInstance().withTitle("Scrum Checklist").withId(1L).now();
 		Mockito.when(service.create(checklist)).thenReturn(createdChecklist);
 		
 		// Then

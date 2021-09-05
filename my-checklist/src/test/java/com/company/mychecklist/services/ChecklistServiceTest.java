@@ -53,10 +53,10 @@ class ChecklistServiceTest {
 		Item scrumMaster = ItemBuilder.getInstance().withTitle("Scrum Master")
 				.withChildren(List.of(removingImpediments)).now();
 		Item roles = ItemBuilder.getInstance().withTitle("Roles").withChildren(List.of(scrumMaster)).now();
-		Checklist checklist = ChecklistBuilder.getInstance().withName("Scrum Checklist").withItems(List.of(roles))
+		Checklist checklist = ChecklistBuilder.getInstance().withTitle("Scrum Checklist").withItems(List.of(roles))
 				.now();
 
-		Checklist checklistCreated = ChecklistBuilder.getInstance().withId(1L).withName("Scrum Checklist")
+		Checklist checklistCreated = ChecklistBuilder.getInstance().withId(1L).withTitle("Scrum Checklist")
 				.withItems(List.of(roles)).now();
 		
 		// When

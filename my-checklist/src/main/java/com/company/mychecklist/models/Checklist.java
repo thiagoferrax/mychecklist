@@ -18,7 +18,7 @@ public class Checklist implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
+	private String title;
 	
 	@OneToMany(mappedBy = "checklist")
 	private List<Item> items = new ArrayList<>();
@@ -26,10 +26,10 @@ public class Checklist implements Serializable {
 	public Checklist() {
 	}
 
-	public Checklist(Long id, String name) {
+	public Checklist(Long id, String title) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.title = title;
 	}
 
 	public Long getId() {
@@ -40,12 +40,12 @@ public class Checklist implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public List<Item> getItems() {
@@ -75,7 +75,7 @@ public class Checklist implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Checklist [id=" + id + ", name=" + name + "]";
+		return "Checklist [id=" + id + ", title=" + title + "]";
 	}
 
 }
