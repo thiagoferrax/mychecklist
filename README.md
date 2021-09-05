@@ -43,7 +43,7 @@ Rethinking the agile-checklist and the agileDMAIC method.
 ```
 #### Class diagram (Model - Entities)
 
-![mychecklist](https://user-images.githubusercontent.com/43149895/130370398-4ea0d9b9-8ee7-4a44-a15b-29400e0ad6cd.png)
+![classDiagram](https://user-images.githubusercontent.com/43149895/132135162-8321cdcf-03f0-4810-9b61-f949539d23e7.png)
 
 ## License
 
