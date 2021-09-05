@@ -1,9 +1,9 @@
 package com.company.mychecklist.models;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,10 +29,11 @@ public class Item implements Serializable {
 	private Checklist checklist;
 
 	@ManyToOne(targetEntity = Item.class)
+	@JsonIgnore
 	private Item parent;
 
 	@OneToMany(mappedBy = "parent")
-	private Set<Item> children = new HashSet<>();
+	private List<Item> children = new ArrayList<>();
 
 	public Item() {
 	}
@@ -76,11 +77,11 @@ public class Item implements Serializable {
 		this.parent = parent;
 	}
 
-	public Set<Item> getChildren() {
+	public List<Item> getChildren() {
 		return children;
 	}
 
-	public void setChildren(Set<Item> children) {
+	public void setChildren(List<Item> children) {
 		this.children = children;
 	}
 
@@ -94,7 +95,7 @@ public class Item implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(id, title);
 	}
 
 	@Override
@@ -106,7 +107,7 @@ public class Item implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Item other = (Item) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(id, other.id) && Objects.equals(title, other.title);
 	}
 
 	@Override

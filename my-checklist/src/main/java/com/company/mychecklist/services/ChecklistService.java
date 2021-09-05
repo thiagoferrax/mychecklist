@@ -29,13 +29,25 @@ public class ChecklistService {
 		
 		Checklist createdChecklist = repository.save(checklist);
 		
-		List<Item> items = checklist.getItems();
-		if (!CollectionUtils.isEmpty(items)) {
-			items.stream().forEach(item -> item.setChecklist(createdChecklist));
-			checklist.setItems(itemService.createAll(items));
-		}
-
+		createAllItems(createdChecklist, null, checklist.getItems());
+		
 		return createdChecklist;
+	}
+
+	private void createAllItems(Checklist checklist, Item parent, List<Item> items) {
+		if (!CollectionUtils.isEmpty(items)) {
+			items.parallelStream().forEach(item -> setChecklistAndParent(item, checklist, parent));
+	
+			itemService.createAll(items);
+		
+			//To create the children items
+			items.parallelStream().forEach(item -> createAllItems(checklist, item, item.getChildren()));
+		}
+	}
+
+	private void setChecklistAndParent(Item item, Checklist checklist, Item parent) {
+		item.setChecklist(checklist);
+		item.setParent(parent);
 	}
 
 	public Checklist findById(Long id) {
