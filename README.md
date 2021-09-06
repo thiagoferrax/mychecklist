@@ -51,6 +51,16 @@ Rethinking the agile-checklist and the agileDMAIC method.
 
 ![classDiagram](https://user-images.githubusercontent.com/43149895/132135162-8321cdcf-03f0-4810-9b61-f949539d23e7.png)
 
+#### Tech stack
+* [React](https://reactjs.org/) for creating the front-end application
+* [UICore Template](https://coreui.io/) for using a free bootstrap admin template
+* [Spring Boot](http://spring.io/projects/spring-boot) for creating the RESTful Web Services
+* [MockMVC](https://spring.io/guides/gs/testing-web/) for testing the Web Layer
+* [Mockito](https://site.mockito.org/) for testing the Services Layer
+* [Postgres](https://www.postgresql.org/) as database
+* [Maven](https://maven.apache.org/) for managing the project's build
+* [Docker](https://www.docker.com/) for building and managing the application distribution using containers 
+
 ## License
 
 MIT © [thiagoferrax](https://github.com/thiagoferrax).
