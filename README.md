@@ -11,10 +11,16 @@ Rethinking the agile-checklist and the agileDMAIC method.
 
 1. As a member of a team, I want to create a checklist, so that I could share with my team and start using it to evaluate a process.
 
+## In Action!
+
+![myChecklist](https://user-images.githubusercontent.com/43149895/132260933-0952391c-e98d-46b3-9504-a79c6bea2f92.gif)
+
 ## Architecture overview
 
 #### Project structure
 ```
+├───admin-my-checklist
+│   └───src
 └───my-checklist
     ├───.mvn
     │   └───wrapper
