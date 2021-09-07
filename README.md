@@ -13,7 +13,7 @@ Rethinking the agile-checklist and the agileDMAIC method.
 
 ## In Action!
 
-![myChecklist](https://user-images.githubusercontent.com/43149895/132260933-0952391c-e98d-46b3-9504-a79c6bea2f92.gif)
+![myChecklist](https://user-images.githubusercontent.com/43149895/132416907-e9f0d1e8-4feb-4ae7-9c27-571d74671ef9.gif)
 
 ## Architecture overview
 
